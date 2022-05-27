@@ -25,4 +25,9 @@
     <PackageReference Include="FluentValidation" Version="11.0.1" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Condition="'$(BUILD_SOURCESDIRECTORY)' == ''" Command="copy /Y &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;..\..\..\..\Dependencies\$(ProjectName).dll" />
+  </Target>
+
+
 </Project>
